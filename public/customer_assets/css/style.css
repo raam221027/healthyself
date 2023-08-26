@@ -1,0 +1,130 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  }
+  
+  :root {
+  --primary-color: #D96AA7;
+  --secondary-color: #DCE0E1;
+  --complimentary-color: #88BFB5;
+  --contrast-color: #F2E527;
+  --light-color: #fff;
+  --dark-color: 
+  
+  }
+  
+  /* .container {
+	background: #191919;
+	min-height: 100vh;
+	font-family: Montserrat, sans-serif;
+  } */
+  
+  nav a {
+	  font-size: 40px;
+	  color: #1347f0;
+	  text-decoration: none;
+	  padding: 20px;
+	  text-align: center;
+	  display: block; /* Change display to block to make each link take up the full width */
+	  margin: 50px 0; /* Add some vertical spacing between menu items */
+	  padding: 10px;
+  }
+  
+  nav {
+	  position: fixed;
+	  text-decoration: none;
+	  left: 0;
+	  z-index: 50;
+	  display: block;
+	  justify-content: space-around;
+	  flex-direction: column; /* Change flex-direction to column */
+	  height: 100vh;
+	  background: var(--secondary-color);
+	  width: 8%;
+  }
+  
+
+
+  /* ORDER TYPE */
+.order-options {
+    display: flex;
+    justify-content: center;
+    gap: 105px; /* Adjust the spacing between buttons */
+}
+
+.order-options .btn-outline-primary {
+    font-size: 25px;
+    width: 150px;
+    height: 150px;
+    background-color: transparent;
+    border: 2px solid #007bff; /* Blue border color */
+    color: #007bff; /* Blue text color */
+    transition: background-color 0.3s, color 0.3s; /* Transition effect for background-color and color */
+    cursor: pointer;
+}
+
+.order-options .btn-outline-primary:hover {
+    background-color: #007bff; /* Blue background color on hover */
+    color: white; /* Text color on hover */
+}
+
+.order-type-button {
+    font-size: 15px;
+    margin-right: 50px;
+}
+
+/* PAYMENT METHOD */
+.modal-body .payment-method {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 105px;
+}
+
+.payment-method .btn-primary{
+	font-size: 30px;
+    width: 150px;
+    height: 150px;
+    border: 2px solid #007bff;
+    color: white;
+	cursor: pointer;
+}
+
+.payment-method .btn-primary:hover {
+	background-color: #007bff;
+    color: white;
+}
+
+.payment-method .btn-outline-primary {
+    font-size: 30px;
+    width: 150px;
+    height: 150px;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+.payment-method .btn-outline-primary {
+    background-color: transparent;
+    border: 2px solid #007bff;
+    color: #007bff;
+}
+
+.payment-method .btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Footer buttons */
+.modal-footer .btn-primary {
+    font-size: 15px;
+    margin-right: 90px;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #007bff;
+    color: white;
+}
+

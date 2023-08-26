@@ -1,0 +1,360 @@
+    body{
+        background-color: rgb(252, 252, 252);
+        font-family: system-ui;
+    }
+    .container{
+        width: 1000px;
+        margin: auto;
+        transition: 0.5s;
+        position: relative; /* Add position relative to the container */
+        z-index: 1; /* Ensure the container stays above other elements */
+    }
+    
+    header {
+        display: grid;
+        grid-template-columns: 1fr 50px;
+        margin-top: 5px; /* Updated margin-top value */
+        align-items: right;
+    }
+ 
+    header .shopping img{
+        width: 30px;
+        left: auto;
+    }
+    header .shopping span{
+        background: red;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+        position: absolute;
+        top: 10px;
+        left: 5%;
+        padding: 1px 7px;
+    }
+    .list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Adjust the columns as needed */
+        column-gap:115px;
+        row-gap: 30px;
+        margin-top: -40px;
+        margin-right: 100px; /* Add some padding on the right side */
+        position:fixed;
+    }
+    .list .item {
+        text-align: center;
+        background-color: #DCE0E1;
+        padding: 10px; /* Reduce padding to make the container smaller */
+        box-shadow: 0 25px 25px #757676;
+        letter-spacing: 5px;
+        position: sticky;
+        width: 240px; /* Adjust the width as needed */
+        height: 330px;
+    }
+
+    .list .item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 100%;
+    }
+
+    .list .item .title {
+        font-weight: 600;
+    }
+
+    .list .item .price {
+        margin: 5px 0; /* Adjust the margin as needed */
+    }
+
+    .list .item button {
+            font-family: cursive;
+            font-size: 20px;
+            font-weight:bolder;
+            width: 180px;
+            background-color: #99dd1b;
+            padding: 5px 15px;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            margin-right: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+    .cart {
+        position: fixed;
+        top: 0;
+        left: 80%; /* Adjust the position to your desired location */
+        width: 25%;
+        padding-right: 15px;
+        background-color: #ffffff;
+        box-shadow: 0 25px 25px #757676;
+        height: 100vh;
+        transition: none; /* Remove the transition */
+        z-index: 2; /* Ensure the cart is above the container */
+        margin-left: 5px; /* Add a margin to avoid overlapping with the sidebar */
+    }
+    /* .active .cart{
+        left: calc(90% - 150px);
+    }
+    .active .container{
+    transform: translateX(-190px);
+    } */
+    .cart h1 {
+        color: #E8BC0E;
+        font-weight: 800;
+        /* margin-left: 100px; */
+        padding: 0 50px;
+        height: 50px;
+        display: fixed;
+        align-items: center;
+        margin-right: 30px;
+        margin-left: 40px;
+        margin-top: -40px;
+    }
+    
+    .cart .checkOut {
+        position: absolute;
+        bottom: 0;
+        width: 80%;
+        display: grid;
+        font-size: 17px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .cart .total {
+        width: 80%;
+        height: 50px;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 17px;
+        position: absolute; /* Use absolute positioning */
+        bottom: 50px; /* Position it at the bottom */
+        left: 0; /* Align it to the left edge */
+        display: flex;
+        border-top: 5px solid #95FC00;
+    }
+
+    .cart .checkOut .place-order-btn {
+        background-color: #95FC00;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    
+
+    .cart .checkOut .cancel-order-btn {
+        background-color: #ee4444;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    
+    .cart .checkOut div:nth-child(2) {
+        background-color: #db0e0e;
+        color: #fff;
+        font-size:18px;
+    }
+
+    .listCart {
+        max-height: calc(100vh - 105px); /* Adjust the value as needed */
+        overflow-y: auto;
+        
+    }
+    /* ... (existing styles) */
+
+    .listCart li{
+        display: inline-block;
+        flex-wrap: wrap;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 20px;
+        padding-bottom: 50px;
+        padding-top: 10px;
+        font-size: 18px;
+        border-top: 5px solid #95FC00;
+        /* border-bottom: 5px solid #95FC00; */
+
+    }
+
+    .listCart li div{
+        display: inline-block;
+        justify-content: center;
+        align-items: center;
+        font-weight: 1000;
+        
+    }
+
+    .listCart li img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        display:inline-block;
+    }
+
+    .listCart li button{
+        background-color: #fff5;
+        font-weight: 1000;
+        margin-top: 20%;
+    }
+
+    .listCart .count{
+        margin: 0 15px;
+        order: 2;
+        grid-column: 1 / -1;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .listCart .bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        order: 3;
+        grid-column: 1 / -1;
+        padding: 10px;
+    }
+
+    .quantity-number {
+        font-size: 18px;
+    }
+
+    .product-price{
+        font-size: 15px;
+    }
+
+    .price{
+        font-size: 20px;
+    }
+
+
+    .quantity-container {
+        display: flex;
+        align-items: center;
+    }
+    
+
+    .quantity-label {
+        margin-right: 0px; /* Add some spacing between label and buttons */
+        font-size: 18px;
+        
+    }
+    
+    .quantity-buttons {
+        display: flex;
+        align-items: center;
+    }
+
+    .quantity-buttons{
+        padding: 5px 10px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+        }
+
+        .quantity-buttons button:hover {
+            color: #74bb11;
+        }
+        
+        .quantity-buttons .btn-decrease {
+            background-color: #f8031b;
+            color: rgb(44, 37, 37);
+            display: inline-block;
+            margin-bottom:-1px;
+        }
+        
+        .quantity-buttons .btn-increase {
+            background-color: #95FC00;
+            color: rgb(0, 10, 0);
+            margin-bottom:-1px;
+        }
+
+        .product-title {
+            word-wrap: break-word; /* Allow the title to wrap within the container */
+            max-width: 100%; /* Set the maximum width of the title container */
+            text-align: center; /* Center the wrapped text within the container */
+            margin: auto; /* Center horizontally within the cart item */
+            padding-right:20px;
+        }
+        
+        
+
+        /* .header-logo {
+            display: flex;
+            justify-content: center; Horizontally center the content */
+            /* align-items: center; /* Vertically center the content */
+            /* height: 150px; Set an appropriate height for the header */ 
+            /* margin-top: 80px;
+            margin-bottom: -80px;
+        } */
+        
+        /* .logo {
+            max-width: 100%;
+            height: 400px;
+        } */
+        
+        
+
+    @media (max-width: 768px) {
+        .list {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .list .item {
+            width: 100%; /* Adjust the width for smaller screens */
+        }
+
+        .cart {
+            width: 100%; /* Adjust the width for smaller screens */
+            left: 0; /* Show the cart on small screens */
+        }
+
+        .active .cart {
+            left: 50; /* Show the cart on small screens */
+        }
+
+        .active .container {
+            transform: translateX(0); /* Reset the container transformation on small screens */
+        }
+        
+        /* ... (other styles that need adjustments for small screens) */
+
+        
+    }
+
+/* Media query for 24-inch monitor */
+/* @media (max-width: 1920px) { */
+    /* Adjust container width and margin for 24-inch monitor */
+    /* .container {
+        width: 80%;
+        margin: auto;
+    }
+    
+    /* Adjust header margin for 24-inch monitor */
+    /* header {
+        margin-top: 20px;
+    } */
+
+    /* Adjust grid and gap for list items on 24-inch monitor */
+    /* .list {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 200px;
+    } */
+
+    /* Adjust cart position for 24-inch monitor
+    /* .cart {
+        left: 76%;
+    } */
+/* } 
