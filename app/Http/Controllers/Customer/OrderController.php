@@ -1,58 +1,84 @@
 <?php
 
 namespace App\Http\Controllers\Customer;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\OrderItem;
+use App\Models\CustomizedProduct;
 use App\Models\User;
+use Ramsey\Uuid\Uuid; 
+use App\Models\AddOns;
+
+
 
 class OrderController extends Controller
 {
-    public function showOrderReceipt()
+    public function showOrderReceipt($orderId)
     {
-        $orderId = session('order_id'); // Replace 'order_id' with the key you use to store the order ID in the session
-
         $order = Order::find($orderId);
+    
+        if (!$order) {
+            return redirect()->back()->with('error', 'Order not found');
+        }
     
         return view('customer.order_receipt', compact('order'));
     }
 
-    public function placeOrder(Request $request)
-{
-    $listCarts = json_decode($request->input('listCarts'), true); // Convert JSON string to array
 
-    // Calculate the total amount
-    $total_amount = 0;
-    foreach ($listCarts as $cartItem) {
-        $total_amount += $cartItem['price'] * $cartItem['quantity'];
+    public function placeOrder()
+    {
+      
+        $latestOrder = Order::latest()->first();
+
+      
+        if ($latestOrder) {
+            $orderItems = OrderItem::with('product')->where('order_id', $latestOrder->id)->get();
+            $addons = AddOns::where('order_id', $latestOrder->id)->get();
+            
+            return view('customer.order_receipt', [
+                'order' => $latestOrder,
+                'orderItems' => $orderItems,
+                'addons' => $addons,
+            ]);
+        }
+
+        return view('customer.order_receipt', [
+            'order' => null, 
+            'orderItems' => [],
+            'addons' => [],
+        ]);
+    }
+
+       
+
+    
+    
+    
+
+
+public function create()
+{
+    // Retrieve the last used order number from the database
+    $lastOrder = Order::orderBy('id', 'desc')->first();
+
+    // Determine the next order number
+    if ($lastOrder) {
+        $nextOrderNumber = $lastOrder->order_number + 1;
+    } else {
+        // If there are no existing orders, start at 1
+        $nextOrderNumber = 1;
     }
 
     // Store the order details in the database
     $order = new Order();
-    $order->order_number = '' . time() . '-' . mt_rand(1000, 9999); // Generate a unique order number
-
-    // Set the order_type from the form input
-    $order->order_type = $request->input('order_type'); // Make sure 'order_type' matches the name attribute of your radio inputs
-
-    $order->total_amount = $total_amount;
+    $order->order_number = $nextOrderNumber;
     $order->save();
 
-    foreach ($listCarts as $cartItem) {
-        // Store each cart item in the order_items table
-        $orderItem = new OrderItem();
-        $orderItem->order_id = $order->id;
-        $orderItem->product_id = $cartItem['id'];
-        $orderItem->quantity = $cartItem['quantity'];
-        $orderItem->subtotal = $cartItem['price'] * $cartItem['quantity'];
-        $orderItem->save();
-    }
-
-    // Retrieve the saved order to ensure order_type is available
-    $order = Order::find($order->id);
-
-    return view('customer.order_receipt', compact('order'));
+    // Continue with other order creation logic or redirect
 }
+
 }
+

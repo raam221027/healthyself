@@ -1,0 +1,395 @@
+body {
+    background-color: rgb(252, 252, 252);
+    font-family: system-ui;
+}
+
+.container {
+    max-width: 1000px; /* Use max-width for responsiveness */
+    margin: auto;
+    padding: 10px; /* Add some padding to the container */
+    transition: 0.5s;
+    position: relative;
+    z-index: 1;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 5px;
+}
+
+header .shopping img {
+    width: 30px;
+}
+
+header .shopping span {
+    background: red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    padding: 1px 7px;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Responsive grid */
+    gap: 30px;
+    margin-top: 20px; /* Adjust the margin as needed */
+    padding: 10px; /* Add some padding */
+}
+
+.list .item {
+    text-align: center;
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 0 5px 5px #757676;
+    letter-spacing: 5px;
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+
+.list .item:hover {
+    transform: scale(1.05); /* Increase the size on hover */
+    box-shadow: 0 45px 60px #757676; /* Change the box shadow on hover */
+}
+
+
+.list .item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.list .item .title {
+    font-weight: 600;
+}
+
+.list .item .price {
+    margin: 5px 0; /* Adjust the margin as needed */
+}
+.list .item button {
+    font-family: 'cursive';
+    font-size: 20px;
+    font-weight: bold;
+    width: 250px;
+    height: 40px; /* Adjust the height as needed */
+    background-color: #99dd1b;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s;
+    position: flex;
+    opacity: -1;
+}
+
+/* Add hover effect */
+.list .item button:hover {
+    background-color: #88cc0a; /* Darker color on hover */
+    opacity: -1; /* Restore full opacity on hover */
+}
+
+
+
+/* Add a focus style for accessibility */
+.list .item button:focus {
+outline: none; /* Remove the default focus outline */
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Add a subtle box shadow on focus */
+}
+
+
+.cart {
+    position: fixed;
+    top: 0;
+    left: 100%; /* Adjust the position to your desired location */
+    width: 25%;
+    padding-right: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 25px 25px #757676;
+    height: 100vh;
+    transition: 0.5s; /* Remove the transition */
+    z-index: 2; /* Ensure the cart is above the container */
+    margin-left: 5px; /* Add a margin to avoid overlapping with the sidebar */
+}
+.active .cart{
+    left: calc(90% - 150px);
+
+}
+.active .container{
+transform: translateX(-90px);
+
+}
+
+.cart h1 {
+    color: #E8BC0E;
+    font-weight: 800;
+    margin-left: 150px;
+    padding: 0 50px;
+    height: 50px;
+    display: fixed;
+    align-items: center;
+    margin-right: 30px;
+    margin-left: 40px;
+    margin-top: -40px;
+}
+
+.cart .checkOut {
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    display: grid;
+    font-size: 17px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.cart .total {
+    width: 100%;
+    height: 50px;
+    padding-right: 60px;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 17px;
+    position: absolute; /* Use absolute positioning */
+    bottom: 50px; /* Position it at the bottom */
+    left: 0; /* Align it to the left edge */
+    display: flex;
+    border-top: 5px solid #95FC00;
+}
+
+.cart .checkOut .place-order-btn {
+    background-color: #95FC00;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.cart .checkOut .cancel-order-btn {
+    background-color: #ee4444;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cart .checkOut div:nth-child(2) {
+    background-color: #db0e0e;
+    color: #fff;
+    font-size:18px;
+}
+
+.listCart {
+    max-height: calc(100vh - 105px); /* Adjust the value as needed */
+    overflow-y: auto;
+    
+}
+/* ... (existing styles) */
+
+.listCart li {
+    display: inline-block;
+    margin: 15px; /* Add some margin for spacing between items */
+    font-size: 18px;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(2, 1fr);
+    padding-bottom: 27px;
+
+    font-size: 18px;
+    /* border-top: 5px solid #95FC00; */
+    /* border-bottom: 5px solid #95FC00; */
+}
+
+
+.listCart li div{
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    font-weight: 1000;
+    
+}
+
+.listCart li img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display:inline-block;
+}
+
+.listCart li button{
+    background-color: #fff5;
+    font-weight: 1000;
+    margin-top: 20%;
+}
+
+.listCart .count{
+    margin: 0 15px;
+    order: 2;
+    grid-column: 1 / -1;
+    padding: 10px;
+    text-align: center;
+}
+
+.listCart .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    order: 3;
+    grid-column: 1 / -1;
+    padding: 10px;
+}
+
+.quantity-number {
+    font-size: 15px;
+}
+
+.product-price{
+    font-size: 15px;
+}
+
+.price{
+    font-size: 20px;
+}
+
+
+.quantity-container {
+    display: flex;
+    align-items: center;
+}
+
+
+.quantity-label {
+    margin-right: 0px; /* Add some spacing between label and buttons */
+    font-size: 15px;
+    
+}
+
+.quantity-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-buttons{
+    padding: 5px 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    }
+
+    .quantity-buttons button:hover {
+        color: #74bb11;
+    }
+    
+    .quantity-buttons .btn-decrease {
+        background-color: #95FC00;
+        color: rgb(44, 37, 37);
+        display: inline-block;
+        margin-bottom:-1px;
+    }
+    
+    .quantity-buttons .btn-increase {
+        background-color: #95FC00;
+        color: rgb(0, 10, 0);
+        margin-bottom:-1px;
+    }
+
+    .product-title {
+        word-wrap: break-word; /* Allow the title to wrap within the container */
+        max-width: 100%; /* Set the maximum width of the title container */
+        text-align: center; /* Center the wrapped text within the container */
+        padding-right:20px;
+        font-size:15px;
+    }
+
+    .customCheckBoxHolder {
+  margin: 5px;
+  display: flex;
+}
+
+.customCheckBox {
+  width: fit-content;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  padding: 2px 8px;
+  background-color: rgba(0, 0, 0, 0.16);
+  border-radius: 0px;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 300ms;
+  transition-property: color, background-color, box-shadow;
+  display: flex;
+  height: 32px;
+  align-items: center;
+  outline: none;
+  justify-content: center;
+  min-width: 55px;
+}
+
+
+.customCheckBox .inner {
+  font-size: 15px;
+  font-weight: 900;
+  pointer-events: none;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 300ms;
+  transition-property: transform;
+  transform: translateY(0px);
+}
+
+.customCheckBox:hover .inner {
+  transform: translateY(-2px);
+}
+
+/* Multiple Checkboxes can be chained together for a radio input */
+.customCheckBoxWrapper:first-of-type .customCheckBox {
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  border-right: 0px;
+}
+
+.customCheckBoxWrapper:last-of-type .customCheckBox {
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  border-left: 0px;
+}
+
+.customCheckBoxInput {
+  display: none;
+}
+
+.customCheckBoxInput:checked + .customCheckBoxWrapper .customCheckBox {
+  background-color: #2d6737;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.17) 0px 2px 4px 1px;
+}
+
+.customCheckBoxInput:checked + .customCheckBoxWrapper .customCheckBox .inner {
+  transform: translateY(-2px);
+}
+
+.customCheckBoxInput:checked + .customCheckBoxWrapper .customCheckBox:hover {
+  background-color: #34723f;
+  box-shadow: rgba(0, 0, 0, 0.26) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.15) 0px 3px 6px 2px;
+}
+
+.customCheckBoxWrapper .customCheckBox:hover .inner {
+  transform: translateY(-2px);
+}

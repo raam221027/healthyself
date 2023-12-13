@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\ProductCategories;
 use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
@@ -18,7 +17,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = Product::latest()->paginate(4);
+        $products = Product::latest()->paginate(3);
     
         return view('products.index', compact('products'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
@@ -49,21 +48,25 @@ public function store(Request $request)
     // Generate a unique product code
     $productCode = 'HTS-' . uniqid();
 
-    // Upload the photo to the 'product_photos' folder in the 'public' disk
-    $photoPath = $request->file('photo')->store('product_photos', 'public');
+    // Get the uploaded file
+    $photo = $request->file('photo');
+
+    // Move the uploaded file to the 'public/product_photos' directory
+    $photoPath = $photo->move(public_path('product_photos'), $productCode . '.' . $photo->getClientOriginalExtension());
 
     $product = new Product([
         'title' => $request->get('title'),
         'price' => $request->get('price'),
         'product_code' => $productCode,
         'description' => $request->get('description'),
-        'photo' => $photoPath,
+        'photo' => 'product_photos/' . $productCode . '.' . $photo->getClientOriginalExtension(),
     ]);
 
     $product->save();
 
     return redirect()->route('products')->with('success', 'Product added successfully');
 }
+
 
 
     /**

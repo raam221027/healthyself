@@ -66,8 +66,9 @@ body {
   font-weight: 400;
   line-height: 1.5;
   text-align: left;
-  background-color: #99cc00 !important; /* This is the current background color, change it to your desired color */
+  background-color: #f8f9fc !important; /* This is the current background color, change it to your desired color */
 }
+
 
 
 
@@ -368,8 +369,38 @@ h1, h2, h3, h4, h5, h6,
   line-height: 1.2;
 }
 
+.header-text {
+  padding-left: 50px;
+}
+
+.header-text h1{
+  font-size: 35px;
+  color: white; /* Optional: Set the text color */
+  margin: 0; /* Optional: Remove any default margin */
+  padding: 20px; /* Optional: Add padding for spacing */
+
+}
+
+h1 {
+  font-size: 24px; /* Set the font size for the entire <h1> */
+}
+
+h1 >   {
+  /* CSS styles for the text inside the <span> element (in this case, "BUT") */
+  font-size: 50px; /* Set the font size for the entire <h1> */
+  font-family: Blippo, fantasy,; /* Specify your desired font family */
+  font-style: italic;
+
+  /* Add any other styles you want for "BUT" here */
+}
+
+
+
+
+
 h1, .h1 {
   font-size: 2.5rem;
+  
 }
 
 h2, .h2 {
@@ -553,7 +584,7 @@ pre code {
 .container-md,
 .container-lg,
 .container-xl {
-  width: 100%;
+  width: 100px;
   padding-right: 0.75rem;
   padding-left: 0.75rem;
   margin-right: auto;
@@ -4023,6 +4054,13 @@ input[type="button"].btn-block {
   list-style: none;
 }
 
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000; /* Adjust the z-index as needed */
+}
+
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
@@ -4177,16 +4215,6 @@ html {
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
-}
-
-body {
-  margin: 0;
-  font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  text-align: left;
-  background-color: #99cc00 !important; /* This is the current background color, change it to your desired color */
 }
 
 
@@ -9307,6 +9335,8 @@ a.badge-dark:focus, a.badge-dark.focus {
   color: #18181c;
 }
 
+
+
 @-webkit-keyframes progress-bar-stripes {
   from {
     background-position: 1rem 0;
@@ -22606,15 +22636,39 @@ form.user .btn-user {
 }
 
 footer.sticky-footer {
+  margin-top:80px;
   padding: 2rem 0;
   flex-shrink: 0;
 }
 
 footer.sticky-footer .copyright {
-  line-height: 1;
+  line-height: 0px;
   font-size: 0.8rem;
 }
 
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70px; /* Adjust the width as needed */
+  height: 100%; /* Set the height to 100% to cover the full viewport height */
+  background-color: #333; /* Set your desired background color */
+  overflow-y: auto; /* Enable vertical scrolling if the content overflows */
+}
+
+
+.col-lg-4 {
+  /* Adjust the position to move it to the top */
+  position: absolute;
+  padding-top: 50px;
+  margin-top: 50px;
+  left: 0;
+  transform: translateX(-7%); /* Move it off the screen */
+  /* Add any other styling you need */
+}
+
+

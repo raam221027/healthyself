@@ -7,29 +7,36 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>@yield('title')</title>
+    <!-- Favicon -->
+        <link href="{{ asset('image/healthyself.png') }}" rel="icon">
     <!-- Custom fonts for this template-->
     <link href="{{ asset('admin_assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="/admin_assets/css/sb-admin-2.css" rel="stylesheet">
+    <link href="{{ asset('cashier_assets/css/daily_sales_report.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <!-- Inside your Blade template's <head> tag -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+     <meta name="csrf-token" content="{{ csrf_token() }}">
+ 
+
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('admin_assets/css/sb-admin-2.css') }}" rel="stylesheet">
     <!-- <link href="{{ asset('admin_assets/css/styles.css') }}" rel="stylesheet"> -->
     </head>
+    
     <body id="page-top">
         
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper"></div>
     
         <!-- Sidebar -->
         @include('cashier.layouts.sidebar')
         <!-- End of Sidebar -->
     
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content-wrapper" class="d-flex flex-row">
     
         <!-- Main Content -->
         <div id="content">
@@ -75,6 +82,7 @@
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('admin_assets/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('admin_assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="{{ asset('admin_assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
     <!-- Custom scripts for all pages-->
@@ -110,7 +118,11 @@
         });
     });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+<script src="{{ asset('app.js') }}"></script>
+
 
 </body>
 </html>

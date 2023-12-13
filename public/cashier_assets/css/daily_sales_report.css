@@ -1,0 +1,17 @@
+
+.totals-section {
+    display: flex;
+    position: absolute;
+    margin-left:18%;
+    margin-top: 20px;
+
+}
+
+.totals-right {
+    text-align: left;
+    padding: 0 5px;
+}
+
+
+
+

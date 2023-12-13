@@ -1,25 +1,96 @@
-<nav class="navbar navbar-expand navbar-light bg-white topbar mb-2 static-top shadow">
-  
-  <!-- Sidebar Toggle (Topbar) -->
-  <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-    <i class="fa fa-bars"></i>
-  </button>
-  
-  <!-- Topbar Search -->
-  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-    <div class="input-group">
-      <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-      <div class="input-group-append">
-        <button class="btn btn-primary" type="button">
-          <i class="fas fa-search fa-sm"></i>
-        </button>
-      </div>
+
+<style>
+   header {
+            background-color:#0f172b;
+            background-repeat:no-repeat;
+            background-size:100%;
+            display: flex;
+            justify-content: left;
+            position: fixed;
+            margin-left:10rem;
+            width: 100%;
+            margin-top:-5px;
+            z-index: 1050;
+            transition: background-color 0.9s ease;
+            backdrop-filter: blur(10px); /* Add backdrop filter for blur effect */
+            height: 100px; /* Adjust the height of the header */
+        }
+
+        .header-text h1 {
+            font-family: "Nunito", sans-serif;
+            display: flex;
+            align-items: center;
+            margin-right: 20rem;
+        }
+
+        .header-text h1 span {
+            font-weight: 800;
+            font-size: 3rem;
+        }
+
+        .header-text img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: none;
+            margin-right: 10px; /* Adjust the margin as needed */
+        }
+
+        .scrolled {
+            background: #0f172b;
+        }
+        .topbar-divider {
+        border-right: 1px solid #fff;
+        height: 50px; /* Adjust the height as needed */
+        margin: 0 10px;
+    }
+
+    .navbar-nav.ml-auto {
+        display: flex;
+        align-items: left;
+    }
+
+    .nav-link {
+        color: #fff;
+    }
+
+    .nav-link:hover {
+        color: #a4f05c;
+    }
+
+    .img-profile {
+        width: 30px; /* Adjust the size as needed */
+        height: 30px; /* Adjust the size as needed */
+        border-radius: 50%;
+    }
+
+    .dropdown-toggle::after {
+        display: none; /* Hide the default dropdown caret */
+    }
+
+    .profile-dropdown {
+        position: relative;
+        z-index: 1051; /* Adjust the z-index to be higher than the navbar */
+    }
+</style>
+
+
+     <!-- Header -->
+<header id="navbar">
+    <div class="header-text">
+        <h1 style="color: #fff; font-size: 50px; font-weight: 800;">
+            <i>heal<span style="color: #a4f05c; font-weight: 800;">THY</span>self</i>
+        </h1>
     </div>
-  </form>
-  
+</header>
+
+
+
+
+
   <!-- Topbar Navbar -->
-  <ul class="navbar-nav ml-auto">
-  
+  <ul class="navbar-nav ml-5">
+
     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
     <li class="nav-item dropdown no-arrow d-sm-none">
       <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,87 +110,24 @@
         </form>
       </div>
     </li>
-  
+
     <!-- Nav Item - Alerts -->
-    <li class="nav-item dropdown no-arrow mx-1">
-      <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-bell fa-fw"></i>
-        <!-- Counter - Alerts -->
-        <span class="badge badge-danger badge-counter">3+</span>
-      </a>
-      <!-- Dropdown - Alerts -->
-      <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-        <h6 class="dropdown-header">
-          Alerts Center
-        </h6>
-        <a class="dropdown-item d-flex align-items-center" href="#">
-          <div class="mr-3">
-            <div class="icon-circle bg-primary">
-              <i class="fas fa-file-alt text-white"></i>
-            </div>
-          </div>
-          <div>
-            <div class="small text-gray-500">December 12, 2019</div>
-            <span class="font-weight-bold">A new monthly report is ready to download!</span>
-          </div>
-        </a>
-        <a class="dropdown-item d-flex align-items-center" href="#">
-          <div class="mr-3">
-            <div class="icon-circle bg-success">
-              <i class="fas fa-donate text-white"></i>
-            </div>
-          </div>
-          <div>
-            <div class="small text-gray-500">December 7, 2019</div>
-            $290.29 has been deposited into your account!
-          </div>
-        </a>
-        <a class="dropdown-item d-flex align-items-center" href="#">
-          <div class="mr-3">
-            <div class="icon-circle bg-warning">
-              <i class="fas fa-exclamation-triangle text-white"></i>
-            </div>
-          </div>
-          <div>
-            <div class="small text-gray-500">December 2, 2019</div>
-            Spending Alert: We've noticed unusually high spending for your account.
-          </div>
-        </a>
-        <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-      </div>
-    </li>
-  
-    <!-- Nav Item - Messages -->
-        <!-- Counter - Messages -->
-      </a>
-      <!-- Dropdown - Messages -->
-     
-    </li>
-  
+   
+
     <div class="topbar-divider d-none d-sm-block"></div>
-  
-    <!-- Nav Item - User Information -->
-    <li class="nav-item dropdown no-arrow">
-      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-          <large>{{ auth()->user()->role }}</>
-        </span>
-        <img class="img-profile rounded-circle" src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/img/undraw_profile.svg">
-      </a>
-      <!-- Dropdown - User Information -->
-      <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-        <a class="dropdown-item" href="/profile">
-          <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-          Profile
-        </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="{{ route('logout') }}">
-          <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-          Logout
-        </a>
+
+
+    @csrf
+    
+</form>
+<a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+    Logout
+</a>
+
       </div>
     </li>
-  
+
   </ul>
-  
+
 </nav>

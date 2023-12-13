@@ -39,19 +39,32 @@
         column-gap:115px;
         row-gap: 30px;
         margin-top: -40px;
-        margin-right: 100px; /* Add some padding on the right side */
-        position:fixed;
+        margin-right: 100px;
+        margin-left: 90px; /* Add some padding on the right side */
     }
     .list .item {
         text-align: center;
-        background-color: #DCE0E1;
-        padding: 10px; /* Reduce padding to make the container smaller */
-        box-shadow: 0 25px 25px #757676;
-        letter-spacing: 5px;
-        position: sticky;
-        width: 240px; /* Adjust the width as needed */
-        height: 330px;
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 0 45px 45px #757676;
+    letter-spacing: 5px;
+    position: relative;
+    width: 240px;
+    height: 330px;
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center items both vertically and horizontally */
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s;
     }
+    
+    
+    .list .item:hover {
+        transform: scale(1.05); /* Increase the size on hover */
+        box-shadow: 0 45px 60px #757676; /* Change the box shadow on hover */
+    }
+    
 
     .list .item img {
         width: 100%;
@@ -67,45 +80,63 @@
     .list .item .price {
         margin: 5px 0; /* Adjust the margin as needed */
     }
-
     .list .item button {
-            font-family: cursive;
-            font-size: 20px;
-            font-weight:bolder;
-            width: 180px;
-            background-color: #99dd1b;
-            padding: 5px 15px;
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            margin-right: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-        }
+        font-family: 'cursive';
+        font-size: 20px;
+        font-weight: bold;
+        width: 250px;
+        height: 40px; /* Adjust the height as needed */
+        background-color: #99dd1b;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s, opacity 0.3s;
+        position: flex;
+        opacity: -1;
+    }
+    
+    /* Add hover effect */
+    .list .item button:hover {
+        background-color: #88cc0a; /* Darker color on hover */
+        opacity: -1; /* Restore full opacity on hover */
+    }
+    
+    
+
+/* Add a focus style for accessibility */
+.list .item button:focus {
+    outline: none; /* Remove the default focus outline */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Add a subtle box shadow on focus */
+}
+
 
     .cart {
         position: fixed;
         top: 0;
-        left: 80%; /* Adjust the position to your desired location */
+        left: 100%; /* Adjust the position to your desired location */
         width: 25%;
         padding-right: 15px;
         background-color: #ffffff;
         box-shadow: 0 25px 25px #757676;
         height: 100vh;
-        transition: none; /* Remove the transition */
+        transition: 0.5s; /* Remove the transition */
         z-index: 2; /* Ensure the cart is above the container */
         margin-left: 5px; /* Add a margin to avoid overlapping with the sidebar */
     }
-    /* .active .cart{
+    .active .cart{
         left: calc(90% - 150px);
+
     }
     .active .container{
-    transform: translateX(-190px);
-    } */
+    transform: translateX(-90px);
+
+    }
+    
     .cart h1 {
         color: #E8BC0E;
         font-weight: 800;
-        /* margin-left: 100px; */
+        margin-left: 150px;
         padding: 0 50px;
         height: 50px;
         display: fixed;
@@ -307,54 +338,4 @@
         
         
 
-    @media (max-width: 768px) {
-        .list {
-            grid-template-columns: repeat(2, 1fr);
-        }
 
-        .list .item {
-            width: 100%; /* Adjust the width for smaller screens */
-        }
-
-        .cart {
-            width: 100%; /* Adjust the width for smaller screens */
-            left: 0; /* Show the cart on small screens */
-        }
-
-        .active .cart {
-            left: 50; /* Show the cart on small screens */
-        }
-
-        .active .container {
-            transform: translateX(0); /* Reset the container transformation on small screens */
-        }
-        
-        /* ... (other styles that need adjustments for small screens) */
-
-        
-    }
-
-/* Media query for 24-inch monitor */
-/* @media (max-width: 1920px) { */
-    /* Adjust container width and margin for 24-inch monitor */
-    /* .container {
-        width: 80%;
-        margin: auto;
-    }
-    
-    /* Adjust header margin for 24-inch monitor */
-    /* header {
-        margin-top: 20px;
-    } */
-
-    /* Adjust grid and gap for list items on 24-inch monitor */
-    /* .list {
-        grid-template-columns: repeat(3, 1fr);
-        column-gap: 200px;
-    } */
-
-    /* Adjust cart position for 24-inch monitor
-    /* .cart {
-        left: 76%;
-    } */
-/* } 

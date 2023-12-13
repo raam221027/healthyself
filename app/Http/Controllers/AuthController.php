@@ -73,15 +73,22 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::guard('web')->logout();
-
-        $request->session()->invalidate();
-
-        return redirect('/login');
+        Auth::logout();
+        return redirect('/login'); // Redirect to your login page
     }
 
-    public function profile()
+
+
+    public function adminProfile()
     {
-        return view('profile');
+        return view('admin.profile');
     }
+
+    public function cashierProfile()
+    {
+        return view('cashier.profile');
+    }
+
+    
+
 }

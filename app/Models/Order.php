@@ -7,11 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-   
-       public function items()
+    protected $fillable = [
+        'order_id',
+        'product_id',
+        'payment_method',
+        'order_type',
+       
+    ];
+    
+    public function items()
     {
-        return $this->belongsToMany(Product::class, 'order_items')->withPivot('quantity');
+       return $this->belongsToMany(Product::class, 'order_items')->withPivot('quantity');
     }
+    
 
     public function totalAmount()
     {
@@ -24,10 +32,10 @@ class Order extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
+
+    public function addons()
+    {
+        return $this->hasMany(AddOns::class);
+    }
+
 }
-
-
-
-
-
-

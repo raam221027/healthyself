@@ -45,7 +45,6 @@
   }
   
 
-
   /* ORDER TYPE */
 .order-options {
     display: flex;
@@ -82,38 +81,7 @@
     gap: 105px;
 }
 
-.payment-method .btn-primary{
-	font-size: 30px;
-    width: 150px;
-    height: 150px;
-    border: 2px solid #007bff;
-    color: white;
-	cursor: pointer;
-}
 
-.payment-method .btn-primary:hover {
-	background-color: #007bff;
-    color: white;
-}
-
-.payment-method .btn-outline-primary {
-    font-size: 30px;
-    width: 150px;
-    height: 150px;
-    transition: background-color 0.3s, color 0.3s;
-    cursor: pointer;
-}
-
-.payment-method .btn-outline-primary {
-    background-color: transparent;
-    border: 2px solid #007bff;
-    color: #007bff;
-}
-
-.payment-method .btn-outline-primary:hover {
-    background-color: #007bff;
-    color: white;
-}
 
 /* Footer buttons */
 .modal-footer .btn-primary {
@@ -121,10 +89,86 @@
     margin-right: 90px;
     transition: background-color 0.3s, color 0.3s;
     cursor: pointer;
+    background-color: #007bff;
 }
 
 .modal-footer .btn-primary:hover {
-    background-color: #007bff;
+    background-color: #05a3ff;
     color: white;
 }
+
+ /* CSS for order type button */
+ .order-options {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    font-family: cursive;
+}
+
+.order-options label {
+    display: flex; /* Use flex to center text vertically and horizontally */
+    align-items: center; /* Center text vertically */
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    padding-left:18px;
+    padding-right: 13px;
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 150px;
+    width: 100%;
+    transition: background-color 0.3s, color 0.3s;
+    
+}
+
+.order-options label:hover {
+    background-color: #05a3ff; /* Change this color to your desired hover color */
+}
+
+.order-options input[type="radio"] {
+    display: none;
+}
+
+.order-options input[type="radio"]:checked + label {
+    background-color: #05a3ff;
+}
+
+
+/* CSS for payment method button */
+.payment-method {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    font-family: cursive;
+}
+
+.payment-method label {
+    display: inline-block;
+    display: flex; /* Use flex to center text vertically and horizontally */
+    align-items: center; /* Center text vertically */
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    padding-left: 40px;
+    padding-right: 10px;
+    height: 150px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.payment-method label:hover {
+    background-color: #05a3ff;/* Change this color to your desired hover color */
+}
+
+.payment-method input[type="radio"] {
+    display: none;
+}
+
+.payment-method input[type="radio"]:checked + label {
+    background-color: #05a3ff;
+}
+
+
 

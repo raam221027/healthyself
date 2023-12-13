@@ -61,8 +61,8 @@ body,dl,dt,dd,ul,ol,li,h2,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote
   }
   .container {
     position: absolute; /* Use 'absolute' or 'relative' depending on your layout needs */
-    padding-top: 50%;/* Adjust this value as needed */
-    left: 58%; /* Adjust this value as needed */
+    padding-top: 40%;/* Adjust this value as needed */
+    left: 51%; /* Adjust this value as needed */
     transform: translate(-50%, -1%); /* Center the element horizontally and vertically */
     text-align: center;
 }

@@ -1,0 +1,14 @@
+.view-order-btn {
+    background-color: #fff;
+    width: 19.5%;
+    height: 30%;
+    padding: 0;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+
+}
+.view-order-btn:hover {
+    background-color: transparent;
+    border: none;
+}

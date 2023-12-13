@@ -30,7 +30,7 @@
         </div>
         <div class="row">
             <div class="d-grid">
-                <button class="btn btn-warning">Update</button>
+                <button class="btn btn-primary">Update</button>
             </div>
         </div>
     </form>

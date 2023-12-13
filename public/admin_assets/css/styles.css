@@ -24,6 +24,7 @@
     transition: all 0.3s;
 }
 
+
 /* Custom CSS to adjust the width of the content area on smaller screens */
 @media (max-width: 768px) {
     #content-wrapper {

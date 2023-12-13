@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+
+
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -11,6 +13,18 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use App\Models\Product;
+use App\Models\CustomizedProduct;
+use App\Models\Order;
+use App\Models\AddOns;
+use App\Models\Payment;
+use App\Models\OrderItem;
+use App\Models\CustomerOrder;
+use App\Models\DailySalesReport;
+use Illuminate\Support\Carbon;
+use App\Http\Controllers\Response;
+
+
 
 class AdminController extends Controller
 {
@@ -21,7 +35,7 @@ class AdminController extends Controller
     public function index(Request $request)
     {
        
-        $users = User::latest()->paginate(8);   
+        $users = User::latest()->paginate(5);   
         return view('admin.index', compact('users'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
             
@@ -235,28 +249,69 @@ public function storeRoles(Request $request, string $id)
     return redirect()->route('admin');
 }
 
-// public function login(Request $request)
-// {
-//     $credentials = $request->validate([
-//         'email' => 'required|email',
-//         'password' => 'required',
-//     ]);
+public function adminDailySalesReport(Request $request)
+{
+    $query = DailySalesReport::query();
+    $dateFilter = $request->date_filter;
 
-//     $user = User::where('email', $request->email)->first();
+    switch ($dateFilter) {
+        case 'today':
+            $query->whereDate('created_at', Carbon::today());
+            break;
+        case 'yesterday':
+            $query->whereDate('created_at', Carbon::yesterday());
+            break;
+        case 'this_week':
+            $query->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]);
+            break;
+        case 'last_week':
+            $query->whereBetween('created_at', [Carbon::now()->subWeek(), Carbon::now()]);
+            break;
+        case 'this_month':
+            $query->whereMonth('created_at', Carbon::now()->month);
+            break;
+        case 'last_month':
+            $query->whereMonth('created_at', Carbon::now()->subMonth()->month);
+            break;
+        case 'this_year':
+            $query->whereYear('created_at', Carbon::now()->year);
+            break;
+        case 'last_year':
+            $query->whereYear('created_at', Carbon::now()->subYear()->year);
+            break;
+    }
 
-//     if ($user && $user->canLogin()) {
-//         if ($user->attemptLogin($request->password)) {
-//             // Authentication successful
-//             $request->session()->regenerate();
+    $reports = $query->get();
 
-//             return redirect()->intended('home');
-//         }
-//     }
+    // Calculate new totals based on the latest orders
+    $currentDate = now()->toDateString();
+    $newTotalCash = Order::where('payment_method', 'Cash')
+        ->where('status', 'Done')
+        ->whereDate('created_at', $currentDate)
+        ->sum('total_amount');
 
-//     // Authentication failed
-//     return redirect()->back()->with('error', 'Invalid credentials');
-// }
+    $newTotalGCash = Order::where('payment_method', 'GCash')
+        ->where('status', 'Done')
+        ->whereDate('created_at', $currentDate)
+        ->sum('total_amount');
+
+    $newTotalSales = $newTotalCash + $newTotalGCash;
+
+    // Update or create the daily sales report record
+    $dailyReport = DailySalesReport::updateOrCreate(
+        ['report_date' => $currentDate],
+        [
+            'total_cash' => $newTotalCash,
+            'total_gcash' => $newTotalGCash,
+            'total_sales' => $newTotalSales,
+        ]
+    );
+
+    return response()->view('admin.daily_sales_report', compact('reports', 'dateFilter'));
 }
+}
+
+
 
 
 

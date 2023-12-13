@@ -7,17 +7,24 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>@yield('title')</title>
+     <!-- Favicon -->
+     <link href="image/healthyself.png" rel="icon">
     <!-- Custom fonts for this template-->
     <link href="{{ asset('admin_assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="/admin_assets/css/sb-admin-2.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="{{ asset('kitchen_assets/css/kitchen.css') }}" rel="stylesheet" type="text/css">
     <!-- Inside your Blade template's <head> tag -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('admin_assets/css/sb-admin-2.css') }}" rel="stylesheet">
     <!-- <link href="{{ asset('admin_assets/css/styles.css') }}" rel="stylesheet"> -->
+    
     </head>
+    
     <body id="page-top">
         
     <!-- Page Wrapper -->
@@ -57,7 +64,7 @@
         <!-- End of Main Content -->
     
         <!-- Footer -->
-        @include('kitchen.layouts.footer')
+        <!-- @include('kitchen.layouts.footer') -->
         <!-- End of Footer -->
     
         </div>
@@ -72,6 +79,8 @@
     </a>
     
     <!-- Bootstrap core JavaScript-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script> src="('bootstrap.js')"</script>
     <script src="{{ asset('admin_assets/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('admin_assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Core plugin JavaScript-->
@@ -80,6 +89,11 @@
     <script src="{{ asset('admin_assets/js/sb-admin-2.min.js') }}"></script>
     <!-- Page level plugins -->
     <script src="{{ asset('admin_assets/vendor/chart.js/Chart.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="{{ asset('kitchen_assets/JS/kitchen.js') }}"></script>
+
+
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         const buttons = document.querySelectorAll('.btn-disable-enable');
@@ -109,7 +123,18 @@
         });
     });
 </script>
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var header = document.getElementById("navbar");
 
-
+            window.addEventListener("scroll", function () {
+                if (window.pageYOffset > 0) {
+                    header.classList.add("scrolled");
+                } else {
+                    header.classList.remove("scrolled");
+                }
+            });
+        });
+</script>
 </body>
 </html>

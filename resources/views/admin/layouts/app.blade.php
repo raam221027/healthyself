@@ -7,6 +7,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>@yield('title')</title>
+    <!-- Favicon -->
+    <link href="{{ asset('image/healthyself.png') }}" rel="icon">
     <!-- Custom fonts for this template-->
     <link href="{{ asset('admin_assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -19,6 +21,8 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('admin_assets/css/sb-admin-2.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" />
     <!-- <link href="{{ asset('admin_assets/css/styles.css') }}" rel="stylesheet"> -->
     </head>
     <body id="page-top">
@@ -45,18 +49,19 @@
             
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>
-            </div>
+                        <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>
+                    </div>
     
             @yield('contents')
     
             <!-- Content Row -->
-    
+        
     
             </div>
             <!-- /.container-fluid -->
                 
         </div>
+        
         <!-- End of Main Content -->
     
         <!-- Footer -->
@@ -75,12 +80,13 @@
     </a>
     
     <!-- Bootstrap core JavaScript-->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="{{ asset('admin_assets/vendor/jquery/jquery.min.js') }}"></script>
+
+    
     <script src="{{ asset('admin_assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Core plugin JavaScript-->
     <script src="{{ asset('admin_assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('admin_assets/js/sb-admin-2.min.js') }}"></script>
     <!-- Page level plugins -->
@@ -125,5 +131,20 @@
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- DATA TABLES -->
+<!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script> -->
+
+<script src="{{ asset('app.js') }}"></script>
+
+
+
+<script>
+    var $j = jQuery.noConflict();
+    $j(document).ready(function() {
+        $j('#myTable').DataTable();
+    });
+</script>
+
 </body>
 </html>

@@ -3,7 +3,7 @@
 <div class="d-flex justify-content-center">
 <div class="col-md-6">
 <div class="col-md-15">
-    <h1 class="mb-4">Edit User</h1>
+<i><span style="color: #a4f05c; font-weight: 800; font-size:35px;">Edit User</i>
     <hr />
     <form action="{{ route('admin.update', $user->id) }}" method="POST">
         @csrf
@@ -53,17 +53,6 @@
             @enderror
         </div>
 
-        <!-- If you want to include permissions, uncomment the following section -->
-        <!-- <div class="mb-3">
-            <label for="permissions" class="form-label">Permissions</label>
-            <select class="form-control" name="permissions[]" multiple>
-                @foreach ($permissions as $permission)
-                    <option value="{{ $permission->id }}" {{ $user->hasPermissionTo($permission->id) ? 'selected' : '' }}>
-                        {{ $permission->name }}
-                    </option>
-                @endforeach
-            </select>
-        </div> -->
 </div>
         <div class="text-center">
             <button type="submit" class="btn btn-primary btn-lg">Update</button>
@@ -73,3 +62,7 @@
 </div>
 </div>
 @endsection
+
+
+
+
