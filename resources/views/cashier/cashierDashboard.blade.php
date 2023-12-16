@@ -132,7 +132,7 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="totalAmount" class="form-label">Total amount</label>
-                                                        <input type="number" readonly class="form-control total-amount" id="totalAmount"
+                                                        <input type="number" readonly class="form-control total-amount" name="total_amount" id="totalAmount"
                                                             value="{{ $order->total_amount }}">
                                                     </div>
 
@@ -154,9 +154,7 @@
                                                     </div>
                                                     @elseif ($order->payment_method === 'Gcash')
                                                     <div class="mb-3">
-                                                        <label for="formGroupExampleInput" class="form-label">Enter an amount</label>
-                                                        <input type="text" class="form-control" name="amount"
-                                                            id="formGroupExampleInput" required>
+                                                    <input type="text" hidden="" class="form-control" id>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="formGroupExampleInput" class="form-label">Reference number</label>

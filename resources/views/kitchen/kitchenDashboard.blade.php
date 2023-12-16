@@ -91,7 +91,7 @@
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $addon->customizedProduct->name }}</td>
                                     <td>
-                                        <p class="text-success">Free</p>
+                                        <p class="text-success">Toppings</p>
                                     </td>
                                 </tr>
                                 @endforeach

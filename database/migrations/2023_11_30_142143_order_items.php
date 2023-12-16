@@ -21,7 +21,10 @@ class OrderItems extends Migration
 
     public function down()
     {
-        Schema::table('order_items', function (Blueprint $table) {
+        Schema::dropIfExists('order_items');
+
+        Schema::create('order_items', function (Blueprint $table) {
+            // Your table definition here
         });
     }
 }

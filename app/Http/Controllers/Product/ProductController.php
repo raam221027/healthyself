@@ -45,13 +45,13 @@ public function store(Request $request)
         'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
 
-    // Generate a unique product code
+    
     $productCode = 'HTS-' . uniqid();
 
-    // Get the uploaded file
+    
     $photo = $request->file('photo');
 
-    // Move the uploaded file to the 'public/product_photos' directory
+    
     $photoPath = $photo->move(public_path('product_photos'), $productCode . '.' . $photo->getClientOriginalExtension());
 
     $product = new Product([

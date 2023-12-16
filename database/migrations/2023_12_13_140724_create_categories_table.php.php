@@ -1,3 +1,5 @@
+create_categories_table.php
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -23,8 +25,6 @@ class CreateCategoriesTable extends Migration
         // Insert default categories
         DB::table('categories')->insert([
             ['name' => 'Healthy Vegan Salad', 'price' => 285.00],
-            ['name' => 'Healthy High Protein Salad', 'price' => 325.00],
-            ['name' => 'Salad Wrap', 'price' => 365.00],
         ]);
     }
 

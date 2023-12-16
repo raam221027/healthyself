@@ -1,10 +1,7 @@
-function calculateTotalPrice(products) {
-    let total = 0;
-    for (const product of products) {
-        total += product.price * product.quantity;
-    }
-    return total;
-}
+
+
+
+
 
 $(document).ready(function() {
     const selectedProducts = []; 
@@ -34,8 +31,23 @@ $(document).ready(function() {
         }
     });
 
-
-
+    function calculateTotalPrice(products, saladIds, saladPrice) {
+        let productsTotal = 0;
+    
+        // Check if saladIds is defined and has length
+        const hasCustomizedSalads = saladIds && saladIds.length > 0;
+    
+        for (const product of products) {
+            productsTotal += product.price * product.quantity;
+        }
+    
+        // Calculate the total price for both products and salads only if there are customized salads
+        const overallTotal = hasCustomizedSalads ? productsTotal + saladPrice : productsTotal;
+    
+        return overallTotal;
+    }
+    
+    
     // Function to update the cart count
     function updateCartCount() {
         const cartCountElement = $('#cart-count');
@@ -73,58 +85,65 @@ $(document).ready(function() {
         updateCartTable(selectedProducts);
     }
 
-    // Function to update the cart table
-    function updateCartTable(products) {
-        const tableBody = $('#cart-table-body');
-        tableBody.empty();
+// Function to update the cart table
+function updateCartTable(products) {
+    const tableBody = $('#cart-table-body');
+    const saladInfo = $('#salad-info');
+    const noSaladLabel = $('#no-salad-label');
+    const selectedSaladIds = saladIdsInTable;
+    const fixedSaladPrice = 285;
 
-        products.forEach((product, index) => {
-            const subtotal = product.price * product.quantity;
-            console.log(subtotal)
-            tableBody.append(`
+    // Clear the table body and salad info
+    tableBody.empty();
+    saladInfo.empty();
+
+    // Render product rows
+    let productsTotal = 0;
+    products.forEach((product, index) => {
+        const subtotal = product.price * product.quantity;
+        tableBody.append(`
             <tr class="product-row" data-index="${index}">
-            <th scope="row">${index + 1}</th>
-            <td class="product-title">${product.title}</td>
-            <td>
-                <span class="product-price fs-6" data-index="${index}">
-                    &#8369; ${product.price}
-                </span>
-            </td>
-            <td>
-            <div class="input-group" style=" background-color:#81B233;">
-    <div class="input-group-prepend">
-        <button class="btn btn-quantity minus-btn" type="button"  style="color:#fff;" data-min="1">-</button>
-    </div>
-    <input
-    readonly
-    type="number"
-    class="form-control me-8 form-control-lg quantity-input"
-    data-index="${index}"
-    value="${product.quantity}"
-/>
+                <th scope="row">${index + 1}</th>
+                <td class="product-title">${product.title}</td>
+                <td>
+                    <span class="product-price fs-6" data-index="${index}">
+                        &#8369; ${product.price.toFixed(2)}
+                    </span>
+                </td>
+                <td>
+                    <div class="input-group" style="background-color:#81B233;">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-quantity minus-btn" type="button" style="color:#fff;" data-min="1">-</button>
+                        </div>
+                        <input
+                            readonly
+                            type="number"
+                            class="form-control me-8 form-control-lg quantity-input"
+                            data-index="${index}"
+                            value="${product.quantity}"
+                        />
+                        <div class="input-group-append">
+                            <button class="btn btn-quantity plus-btn" type="button" style="color:#fff;">+</button>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <span class="product-subtotal" data-index="${index}">
+                        &#8369; ${subtotal.toFixed(2)}
+                    </span>
+                </td>
+                <td class="action-column">
+                    <button class="btn btn-danger btn-sm delete-product" data-index="${index}">
+                        <i class="bi bi-trash3-fill"></i>
+                    </button>
+                </td>
+            </tr>
+        `);
+        productsTotal += subtotal;
+    });
+    const overallTotal = calculateTotalPrice(products, saladIdsInTable, fixedSaladPrice);
 
-    <div class="input-group-append">
-        <button class="btn btn-quantity plus-btn" type="button" style="color:#fff;">+</button>
-    </div>
-</div>
-            </td>
-            <td>
-                <span class="product-subtotal" data-index="${index}">
-                    &#8369; ${subtotal}
-                </span>
-            </td>
-            <td>
-                <button class="btn btn-danger btn-sm delete-product" data-index="${index}">
-                    <i class="bi bi-trash3-fill"></i>
-                </button>
-            </td>
-        </tr>
-        
-            `);
-        });
-
-
-// Add an event listener to the plus button
+    // Add an event listener to the plus button
 $('.plus-btn').on('click', function() {
     const index = $(this).closest('td').find('.quantity-input').data('index');
     const currentQuantity = selectedProducts[index].quantity;
@@ -148,32 +167,70 @@ $('.minus-btn').on('click', function() {
         console.log('Updated quantity:', selectedProducts[index].quantity); // Log the updated quantity
     }
 });
+    // Add an event listener to delete products
+    $('.delete-product').on('click', function () {
+        const index = $(this).data('index');
+        selectedProducts.splice(index, 1);
+        updateCartTable(selectedProducts);
+    });
 
-function updateQuantityInput(index, value) {
-    $(`.quantity-input[data-index="${index}"]`).val(value);
+    let rowNum = 0;
+    saladIdsInTable.forEach((saladId) => {
+        const card = $(`.salad[data-salad-id="${saladId}"]`);
+        const saladName = card.find('.card-title').text();
+        const saladPrice = 285; // Set the salad price to a fixed value
+        // Create a new table row and append it to the existing content
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+        <th scope="row">${rowNum + 1}</th>
+        <td>${saladName}</td>
+        <td class="text-success">Toppings</td>
+        <td></td>
+        <td class="text-success"></td> <!-- Display the salad price -->
+        <td>
+            <button class="btn btn-danger btn-sm delete-salad">
+                <i class="bi bi-trash3-fill"></i>
+            </button>
+        </td>
+        `;
+    
+        saladInfo.append(newRow);
+    
+        // Add an event listener to delete the salad when the delete button is clicked
+        const deleteButton = newRow.querySelector('.delete-salad');
+        deleteButton.addEventListener('click', function () {
+            newRow.remove(); // Remove the salad row
+            rowNum--; // Decrement the row number
+            saladIdsInTable.splice(saladIdsInTable.indexOf(saladId), 1); // Remove the salad ID from the array
+            if (rowNum === 0) {
+                // Show the "No salad information" label when all salads are removed
+                noSaladLabel.style.display = 'block';
+            }
+        });
+    
+        rowNum++;
+    });
+    
+    // Hide the "No salad information" label when adding the first salad
+    if (rowNum > 0) {
+        noSaladLabel.hide();
+    } else {
+        noSaladLabel.show();
+    }
+
+    
+    // Append the total row for products
+    saladInfo.append(`
+    <tr>
+        <th class="fw-bold" colspan="4">Total:</th>
+        <td>&#8369; ${overallTotal.toLocaleString()}</td>
+    </tr>
+`);
+
+    // Update the cart count
+    updateCartCount();
 }
 
-
-
-        // Add an event listener to delete products
-        $('.delete-product').on('click', function() {
-            const index = $(this).data('index');
-            selectedProducts.splice(index, 1); // Remove the product at the given index
-            updateCartTable(selectedProducts);
-        });
-
-        const totalPrice = calculateTotalPrice(products);
-
-        tableBody.append(`
-            <tr>
-                <th class="fw-bold" colspan="4">Total:</th>
-                <td>&#8369; ${totalPrice.toLocaleString()}</td>
-                <td></td>
-            </tr>
-        `);
-        // Update the cart count
-        updateCartCount();
-    }
 
     
 // Handle the "Place Order" button click
@@ -265,79 +322,99 @@ $('#saveBtn').on('click', function () {
 
 const saladIdsInTable = [];
 
-document.addEventListener('DOMContentLoaded', function () {
-    const saladCards = document.querySelectorAll('.salad');
-    const saladInfo = document.querySelector('#salad-info');
-    const noSaladLabel = document.querySelector('#no-salad-label');
+// Function to update salad information
+function updateSaladInfo() {
+    const saladInfo = $('#salad-info');
+    const noSaladLabel = $('#no-salad-label');
+    
+    // Clear the salad info
+    saladInfo.empty();
+
     let rowNum = 0;
-   
+    saladIdsInTable.forEach((saladId) => {
+        const card = $(`.salad[data-salad-id="${saladId}"]`);
+        const saladName = card.find('.card-title').text();
+        const saladPrice = 285; // Set the salad price to a fixed value
 
-    saladCards.forEach(card => {
-        card.addEventListener('click', function () {
-            const saladId = this.getAttribute('data-salad-id');
-            const saladName = this.querySelector('.card-title').textContent;
-            const saladPrice = this.getAttribute('data-salad-price')
-            // Check if the salad already exists in the off-canvas
-            const isSaladExist = saladIdsInTable.includes(saladId);
+        // Create a new table row and append it to the existing content
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <th scope="row">${rowNum + 1}</th>
+            <td>${saladName}</td>
+            <td class="text-success">Toppings</td>
+            <td></td>
+            <td></td>
+            <td>
+                <button class="btn btn-danger btn-sm delete-salad">
+                    <i class="bi bi-trash3-fill"></i>
+                </button>
+            </td>
+        `;
 
-            if (isSaladExist) {
-                // Show an alert error if the salad already exists
-                // Swal.fire({
-                //     icon: 'error',
-                //     title: 'Oops...',
-                //     text: 'This salad is already added.',
-                // });
-            } else if (rowNum < 5) {
-                rowNum++; // Increment the row number
+        saladInfo.append(newRow);
 
-                // Create a new table row and append it to the existing content
-                const newRow = document.createElement('tr');
-                newRow.innerHTML = `
-                    <th scope="row">${rowNum}</th>
-                    <td>${saladName}</td>
-                    <td class="text-success data-salad-price">Toppings</td>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                    <button class="btn btn-danger btn-sm delete-salad">
-                        <i class="bi bi-trash3-fill"></i>
-                    </button>
-                </td>
-                `;
-                saladInfo.appendChild(newRow);
-
-                // Hide the "No salad information" label when adding the first salad
-                if (rowNum === 1) {
-                    noSaladLabel.style.display = 'none';
-                }
-
-                // Add the salad ID to the array
-                saladIdsInTable.push(saladId);
-
-                // Add an event listener to delete the salad when the delete button is clicked
-                const deleteButton = newRow.querySelector('.delete-salad');
-                deleteButton.addEventListener('click', function () {
-                    newRow.remove(); // Remove the salad row
-                    rowNum--; // Decrement the row number
-                    saladIdsInTable.splice(saladIdsInTable.indexOf(saladId), 1); // Remove the salad ID from the array
-                    if (rowNum === 0) {
-                        // Show the "No salad information" label when all salads are removed
-                        noSaladLabel.style.display = 'block';
-                    }
-                });
-            } else {
-                // Show an alert error if the maximum limit is reached
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: '5 toppings',
-                });
+        // Add an event listener to delete the salad when the delete button is clicked
+        const deleteButton = newRow.querySelector('.delete-salad');
+        deleteButton.addEventListener('click', function () {
+            newRow.remove(); // Remove the salad row
+            rowNum--; // Decrement the row number
+            saladIdsInTable.splice(saladIdsInTable.indexOf(saladId), 1); // Remove the salad ID from the array
+            if (rowNum === 0) {
+                // Show the "No salad information" label when all salads are removed
+                noSaladLabel.style.display = 'block';
             }
         });
+
+        rowNum++;
     });
+
+    // Hide the "No salad information" label when adding the first salad
+    if (rowNum > 0) {
+        noSaladLabel.hide();
+    } else {
+        noSaladLabel.show();
+    }
+}
+
+// Event listener for clicking on salad cards
+$('.salad').on('click', function() {
+    const saladId = $(this).data('salad-id');
+    const isSaladExist = saladIdsInTable.includes(saladId);
+
+    if (!isSaladExist && saladIdsInTable.length < 5) {
+        saladIdsInTable.push(saladId);
+        updateSaladInfo();
+    } else if (!isSaladExist && saladIdsInTable.length >= 5) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '5 toppings',
+        });
+    }
 });
+
+// Function to add a product to the cart
+function addProductToCart(productId, productTitle, productPrice, quantity = 1) {
+    const existingProduct = selectedProducts.find(product => product.id === productId);
+
+    if (!existingProduct) {
+        // If the product is not already in the list, add it with the initial quantity
+        selectedProducts.push({
+            id: productId,
+            title: productTitle,
+            price: parseFloat(productPrice),
+            quantity: quantity,
+        });
+    } else {
+        // If the product already exists, update the quantity
+        existingProduct.quantity += quantity;
+    }
+
+    updateCartTable(selectedProducts);
+    updateSaladInfo(); // Update salad information whenever a product is added
+}
+
+
 
 
 // Select the radio buttons

@@ -283,7 +283,7 @@ public function adminDailySalesReport(Request $request)
 
     $reports = $query->get();
 
-    // Calculate new totals based on the latest orders
+    
     $currentDate = now()->toDateString();
     $newTotalCash = Order::where('payment_method', 'Cash')
         ->where('status', 'Done')
@@ -297,7 +297,7 @@ public function adminDailySalesReport(Request $request)
 
     $newTotalSales = $newTotalCash + $newTotalGCash;
 
-    // Update or create the daily sales report record
+
     $dailyReport = DailySalesReport::updateOrCreate(
         ['report_date' => $currentDate],
         [

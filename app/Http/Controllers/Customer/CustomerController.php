@@ -29,6 +29,7 @@ class CustomerController extends Controller
 
     public function save_order(Request $request)
     {
+        
         // Generate a random order_number and check if it's unique
         do {
             $orderNumber = mt_rand(1000, 9999);

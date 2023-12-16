@@ -31,7 +31,7 @@
   }
 </style>
 
-<div class="d-flex align-items-start" style="margin-left: 30%;">
+<div class="d-flex align-items-start" style="margin-left: 23%;">
   <!-- Vertical Navigation Menu -->
   <div class="nav flex-column nav-pills me-3 bg-light" id="v-pills-tab" role="tablist" aria-orientation="vertical">
     <!-- Menu Tab -->
@@ -79,7 +79,7 @@
             <div class="col-md-4">
                 <div class="card salad mb-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" data-salad-id="{{ $s->id }}" style="width: 18rem; margin-left: 100px; height: 40vh;">
                     <div class="d-flex flex-column bg-image hover-overlay hover-zoom hover-shadow ripple">
-                        <img src="{{ asset('' . $s->photo) }}" class="card-img-top mx-auto" alt="..." style="height: 25vh">
+                        <img src="{{ asset('' . $s->photo) }}" class="card-img-top mx-auto" alt="..." style="height: 29vh">
                         <div class="card-body">
                             <h5 class="card-title text-center">{{ $s->name }}</h5>
                             <p class="card-text text-center text-success"></p>
@@ -125,7 +125,7 @@
         </table>
         
         <div class="table-responsive">
-            <p class="mt-4 fw-bold fs-5">Customized Salad</p>
+            <p class="mt-4 fw-bold fs-3">Customized Salad - 285</p>
                 <table class="table">
                     <thead class="table-success">
                         <tr>
@@ -133,13 +133,12 @@
                             <th class="fw-bold" scope="col">Product</th>
                             <th class="fw-bold" scope="col">Description</th>
                             <th class="fw-bold" scope="col"></th>
-                            <th></th>
+                            <th class="fw-bold" scope="col"></th>
                             <th class="fw-bold" scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody id="salad-info">
                     </tbody>
-                    
                 </table>
                 <div id="no-salad-label" class="text-center mb-5">No salad information</div>
                 
