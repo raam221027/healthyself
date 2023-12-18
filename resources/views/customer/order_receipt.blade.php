@@ -67,10 +67,11 @@
                         @endif
                     </tbody>
                     <tfoot>
-                        <tr>
-                            <td class="payment text-end" colspan="2">Total</td>
-                            <td>&#8369; {{ number_format($orderItems->sum('subtotal'), 2) }}</td>
-                        </tr>
+                    <tr>
+                        <td class="payment text-end" colspan="2">Total</td>
+                        <td>&#8369; {{ number_format($order->total_amount, 2) }}</td>
+                    </tr>
+
                     </tfoot>
                 </table>
 

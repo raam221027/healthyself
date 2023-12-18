@@ -68,15 +68,11 @@
                                                     </tr>
                                                     @endforeach
                                                 </tbody>
-                                                <tfoot>
-                                                    <tr>
-                                                        <td class="payment text-end" colspan="8">Total ₱{{ $order->total_amount }}</td>
-                                                    </tr>
-                                                </tfoot>
+                                              
                                             </table>
                                         </div>
                                         <div class="table-responsive">
-                                            <p class="fw-bold fs-4 mt-5">Add-Ons</p>
+                                            <p class="fw-bold fs-4 mt-5">Customized Salad</p>
                                             <table class="table">
                                                 <thead>
                                                     <tr>
@@ -102,6 +98,11 @@
                                                     </tr>
                                                     @endif
                                                 </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td class="payment text-end fw-bold" colspan="8">Total ₱{{ $order->total_amount }}</td>
+                                                    </tr>
+                                                </tfoot>
                                             </table>
                                         </div>
                                     </div>

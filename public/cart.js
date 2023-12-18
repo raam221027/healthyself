@@ -232,11 +232,20 @@ $('.minus-btn').on('click', function() {
 }
 
 
-    
 // Handle the "Place Order" button click
 $('#saveBtn').on('click', function () {
-    // Calculate subtotal for each product
-    selectedProducts.forEach(product => {
+    // Check if the cart is empty
+    if (selectedProducts.length === 0 && saladIdsInTable.length === 0) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Your cart is empty. Add some products or salads to place an order.',
+        });
+        return;
+    }
+
+     // Calculate subtotal for each product
+     selectedProducts.forEach(product => {
         product.subtotal = product.price * product.quantity;
     });
 

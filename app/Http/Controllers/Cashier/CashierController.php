@@ -21,7 +21,7 @@ class CashierController extends Controller
 {
     public function cashierDashboard(Request $request)
     {
-        $perPage = 5; // You can adjust the number per page as needed
+        $perPage = 50; // You can adjust the number per page as needed
     
         // Fetch unpaid orders with order items
         $customerOrders = Order::with('orderItems')

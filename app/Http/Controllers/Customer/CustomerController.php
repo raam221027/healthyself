@@ -43,6 +43,34 @@ class CustomerController extends Controller
         $order->payment_method = $request->input('paymentMethod');
         $order->save();
 
+    
+    // Fixed price for customized salad with toppings
+    $fixedSaladPrice = 285;
+
+    // Calculate the total amount of products in the cart
+    $totalProductsAmount = 0;
+
+    foreach ($request->input('selectedProducts') as $productData) {
+        $totalProductsAmount += $productData['subtotal'];
+    }
+
+    // Check if there are salads in the cart
+    $saladIds = $request->input('saladIds');
+    $totalSaladAmount = 0;
+
+    if (!empty($saladIds)) {
+        // Calculate the total amount for customized salad
+        $totalSaladAmount = $fixedSaladPrice;
+    }
+
+    // Calculate the overall total amount
+    $overallTotalAmount = $totalProductsAmount + $totalSaladAmount;
+
+    // Update the order's total amount
+    $order->total_amount = $overallTotalAmount;
+    $order->save();
+
+    
         // Assuming 'selectedProducts' is an array of related product data
         foreach ($request->input('selectedProducts') as $productData) {
             // Create a new order item
