@@ -37,7 +37,7 @@
                 <th>Collectables (Cash)</th>
                 <th>Receivables (GCash)</th>
                 <th>Total Sales</th>
-                <th>Action</th>
+                <th class="text-center">Action</th>
                 
             </tr>
         </thead>
@@ -49,6 +49,11 @@
                 <td>{{ $report->total_cash }}</td>
                 <td>{{ $report->total_gcash }}</td>
                 <td>{{ $report->total_sales }}</td>
+                <td class="text-center action-column">
+                    <button class="btn btn-primary btn-sm" type="button">
+                        <i class="bi bi-eye-fill"></i>
+                    </button>
+                </td>
             </tr>
             @endforeach
         </tbody>

@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('contents')
-<div class="table-responsive" style="height: 500px; overflow-y: auto; margin-left: 18%; width: 80%;">
+<div class="table-responsive" style="height: 500px; overflow-y: auto; margin-left: 17%; width: 83%;">
     <i><span style="color: #a4f05c; font-weight: 800; font-size:38px;">Monthly Product Sold Report</i>
         <table class="table table-bordered table-hover">
             <thead class="table-success">
