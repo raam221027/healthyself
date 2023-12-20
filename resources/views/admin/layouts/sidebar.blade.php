@@ -50,11 +50,21 @@
     <span>Users</span></a>
     </li>
 
+
     <li class="nav-item">
-    <a class="nav-link" href="{{ route('admin.daily_sales_report') }}">
-    <i class="fas fa-fw fa-tachometer-alt"></i>
-    <span>Reports</span></a>
-    </li>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReports"
+                aria-expanded="true" aria-controls="collapseReports">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Reports</span>
+            </a>
+            <div id="collapseReports" class="collapse" aria-labelledby="headingReports" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ route('admin.daily_sales_report') }}">Sales Report</a>
+                    <a class="collapse-item" href="{{ route('admin.product_sold_report') }}">Product Sold Report</a>
+                </div>
+            </div>
+        </li>
+
 
 
 

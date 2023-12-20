@@ -1,8 +1,9 @@
 @extends('cashier.layouts.app')
 
 @section('contents')
+   
+    <div class="table-responsive" style="height: 500px; overflow-y: auto; margin-left: 21%; width: 75%; margin-top:10%;">
     <i><span style="color: #a4f05c; font-weight: 800; font-size:38px;">Sales Report</i>
-    <div class="table-responsive" style="height: 400px; overflow-y: auto; margin-left: 21%; width: 75%; margin-top:10%;">
         <table class="table table-bordered table-hover">
             <thead class="table-success">
                 <tr>

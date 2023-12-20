@@ -13,6 +13,7 @@ use App\Http\Controllers\Cashier\CashierController;
 use App\Http\Controllers\Kitchen\KitchenController;
 use App\Http\Controllers\CartController;
 use App\Services\CartServices;
+use App\Http\Controllers\Admin\ProductSoldController;
 
 
 
@@ -141,6 +142,8 @@ Route::controller(AdminController::class)->prefix('users')->group(function () {
     
 
     Route::get('show-category', [CustomizedController::class, 'showCategory'])->name('customer.category_products');
+
+    Route::get('/monthly-product-sold-report', [ProductSoldController::class, 'monthlyProductSoldReport'])->name ('admin.product_sold_report');
 
 
 

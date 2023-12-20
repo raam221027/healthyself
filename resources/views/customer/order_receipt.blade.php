@@ -40,7 +40,7 @@
                     </tbody>
                 </table>
 
-                <p class="fw-bold fs-5 mt-5">Customized Salad</p>
+                <p class="fw-bold fs-5 mt-5">Bukidnon Salad</p>
                 <table class="table table-bordered">
                     <thead class="table-success">
                         <tr>

@@ -18,6 +18,12 @@
             </tr>
         </thead>
         <tbody>
+        @if ($customerOrders->isEmpty())
+                <tr>
+                    <td colspan="7">No order yet</td>
+                </tr>
+            @else
+            @endif
         @foreach($customerOrders->sortBy('created_at') as $order)
             <tr>
                 <td style="padding: 10px;">{{ $loop->iteration }}</td>
@@ -57,7 +63,7 @@
                                                         <th>Subtotal</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody>  
                                                     @foreach ($order->orderItems as $item)
                                                     <tr>
                                                         <td>{{ $order->order_number }}</td>
@@ -72,7 +78,7 @@
                                             </table>
                                         </div>
                                         <div class="table-responsive">
-                                            <p class="fw-bold fs-4 mt-5">Customized Salad</p>
+                                            <p class="fw-bold fs-4 mt-5">Bukidnon Salad</p>
                                             <table class="table">
                                                 <thead>
                                                     <tr>
@@ -88,13 +94,13 @@
                                                         <th scope="row">{{ $loop->iteration }}</th>
                                                         <td>{{ $addon->customizedProduct->name }}</td>
                                                         <td>
-                                                            <p class="text-success">Free</p>
+                                                            <p class="text-success">Toppings</p>
                                                         </td>
                                                     </tr>
                                                     @endforeach
                                                     @else
                                                     <tr>
-                                                        <td class="text-center" colspan="3">No addons for this order</td>
+                                                        <td class="text-center" colspan="3">No customize for this order</td>
                                                     </tr>
                                                     @endif
                                                 </tbody>

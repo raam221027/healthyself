@@ -42,8 +42,8 @@
 
     <!-- Make Your Own Salad Tab -->
     <button class="nav-link text-primary fw-bold fs-7" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">
-      <i class="fas fa-leaf"></i>
-      Make your own salad
+      <i class=""></i>
+      <span>Make your own salad with 5 toppings</span>
     </button>
   </div>
 
@@ -125,7 +125,7 @@
         </table>
         
         <div class="table-responsive">
-            <p class="mt-4 fw-bold fs-3">Customized Salad - 285</p>
+            <p class="mt-4 fw-bold fs-3">Customized Salad</p>
                 <table class="table">
                     <thead class="table-success">
                         <tr>

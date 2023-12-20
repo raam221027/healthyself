@@ -373,6 +373,7 @@ function updateSaladInfo() {
                 noSaladLabel.style.display = 'block';
             }
         });
+        
 
         rowNum++;
     });

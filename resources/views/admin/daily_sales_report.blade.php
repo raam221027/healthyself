@@ -34,9 +34,11 @@
             <tr>
                 <th>#</th>
                 <th>Date & Time</th>
-                <th>Cash</th>
-                <th>GCash</th>
+                <th>Collectables (Cash)</th>
+                <th>Receivables (GCash)</th>
                 <th>Total Sales</th>
+                <th>Action</th>
+                
             </tr>
         </thead>
         <tbody>
