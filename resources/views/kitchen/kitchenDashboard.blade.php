@@ -75,7 +75,7 @@
                         </table>
                     </div>
                     <div class="table-responsive">
-                        <p class="fw-bold fs-4 mt-5">Customized</p>
+                        <p class="fw-bold fs-4 mt-5">Bukidnon Salad</p>
                         <table class="table">
                             <thead>
                                 <tr>

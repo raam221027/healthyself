@@ -4,7 +4,8 @@
 
 
 $(document).ready(function() {
-    const selectedProducts = []; 
+    const selectedProducts = [];
+    const selectedSalads = [];
     
 
     // Event listener for clicking on cards
@@ -111,21 +112,21 @@ function updateCartTable(products) {
                     </span>
                 </td>
                 <td>
-                    <div class="input-group" style="background-color:#81B233;">
-                        <div class="input-group-prepend">
-                            <button class="btn btn-quantity minus-btn" type="button" style="color:#fff;" data-min="1">-</button>
-                        </div>
-                        <input
-                            readonly
-                            type="number"
-                            class="form-control me-8 form-control-lg quantity-input"
-                            data-index="${index}"
-                            value="${product.quantity}"
-                        />
-                        <div class="input-group-append">
-                            <button class="btn btn-quantity plus-btn" type="button" style="color:#fff;">+</button>
-                        </div>
-                    </div>
+                <div class="input-group" style="background-color:#81B233;">
+                <div class="input-group-prepend">
+                    <button class="btn btn-quantity minus-btn" type="button" style="color:#fff; font-size: 16px;">-</button>
+                </div>
+                <input
+                    readonly
+                    type="number"
+                    class="form-control me-8 form-control-lg quantity-input"
+                    data-index="${index}"
+                    value="${product.quantity}"
+                    style="font-size: 16px; text-align: center; width: 50px;" 
+                <div class="input-group-append">
+                    <button class="btn btn-quantity plus-btn" type="button" style="color:#fff; font-size: 16px;">+</button>
+                </div>
+            </div>
                 </td>
                 <td>
                     <span class="product-subtotal" data-index="${index}">
@@ -384,7 +385,10 @@ function updateSaladInfo() {
     } else {
         noSaladLabel.show();
     }
+
 }
+
+
 
 // Event listener for clicking on salad cards
 $('.salad').on('click', function() {
@@ -398,7 +402,7 @@ $('.salad').on('click', function() {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: '5 toppings',
+            text: 'Maximum of 5 toppings only',
         });
     }
 });
@@ -453,15 +457,3 @@ paymentMethodRadios.forEach(radio => {
         }
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-

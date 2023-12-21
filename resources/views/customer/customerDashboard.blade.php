@@ -43,7 +43,7 @@
     <!-- Make Your Own Salad Tab -->
     <button class="nav-link text-primary fw-bold fs-7" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">
       <i class=""></i>
-      <span>Make your own salad with 5 toppings</span>
+      <span>Make your own salad for only ₱285</span>
     </button>
   </div>
 
