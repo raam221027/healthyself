@@ -8,14 +8,15 @@ class CreateDailySalesReportsTable extends Migration
 {
     public function up()
     {
-        Schema::create('daily_sales_reports', function (Blueprint $table) {
-            $table->id();
-            $table->unique('report_date');
-            $table->decimal('total_cash', 10, 2);
-            $table->decimal('total_gcash', 10, 2);
-            $table->decimal('total_sales', 10, 2);
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('daily_sales_reports')) {
+            Schema::create('daily_sales_reports', function (Blueprint $table) {
+                $table->id();
+                $table->decimal('total_cash', 10, 2);
+                $table->decimal('total_gcash', 10, 2);
+                $table->decimal('total_sales', 10, 2);
+                $table->timestamps();
+            });
+        }
     }
 
     public function down()

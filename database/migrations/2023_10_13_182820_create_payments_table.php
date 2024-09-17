@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('cashier_id');
             $table->string('ref_num')->nullable();
             $table->string('amount');
-            $table->string('change')->nullable();;
+            $table->string('change')->nullable();
             $table->timestamps();
         });
     }

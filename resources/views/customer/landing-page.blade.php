@@ -97,7 +97,7 @@
         <div class="container-xxl position-relative p-0">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
         <a href="" class="navbar-brand p-0">
-            <h1 class="text-white m-0 " > <img src="image/healthyself.png"  class="me-3" style="border-radius:50%;"></i>heal<span style="color: #a4f05c;">THY</span>self</h1>
+            <h1 class="text-white m-0 " > <img src="img/lettuce.png"  class="me-3" style="border-radius:50%;"></i>heal<span style="color: #a4f05c;">THY</span>self</h1>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="fa fa-bars"></span>

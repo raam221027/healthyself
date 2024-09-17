@@ -52,9 +52,9 @@ class CashierController extends Controller
         $payments = new Payment();
         $payments->order_id	= $order->id;
         $payments->cashier_id = Auth::user()->id;
-        $payments->ref_num = $request->ref_num;
         $payments->amount = $request->amount;
         $payments->change = $request->change;
+        $payments->ref_num = $request->ref_num;
         $payments->save();
 
         Alert::success('Payment success');
