@@ -6,18 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateDailySalesReportsTable extends Migration
 {
-    public function up()
-    {
-        if (!Schema::hasTable('daily_sales_reports')) {
-            Schema::create('daily_sales_reports', function (Blueprint $table) {
-                $table->id();
-                $table->decimal('total_cash', 10, 2);
-                $table->decimal('total_gcash', 10, 2);
-                $table->decimal('total_sales', 10, 2);
-                $table->timestamps();
-            });
-        }
+  public function up()
+{
+    if (!Schema::hasTable('daily_sales_reports')) {
+        Schema::create('daily_sales_reports', function (Blueprint $table) {
+            $table->id();
+            $table->decimal('total_cash', 10, 2)->default(0.00)->change();
+            $table->decimal('total_gcash', 10, 2)->default(0.00)->change();
+            $table->decimal('total_sales', 10, 2)->default(0.00)->change();
+            $table->timestamps();
+        });
     }
+}
 
     public function down()
     {

@@ -8,15 +8,21 @@ class OrderItems extends Migration
 {
     public function up()
     {
-        Schema::create('order_items', function (Blueprint $table) {
-            $table->bigIncrements('id'); 
-            $table->bigInteger('order_id')->unsigned()->notNullable();
-            $table->bigInteger('product_id')->unsigned()->notNullable();
-            $table->integer('quantity')->notNullable();
-            $table->decimal('subtotal', 10, 2)->notNullable();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('order_items')) {
+            Schema::create('order_items', function (Blueprint $table) {
+                $table->id();
+                $table->unsignedBigInteger('order_id');
+                $table->string('item_name');
+                $table->decimal('item_price', 10, 2);
+                $table->integer('quantity');
+                $table->timestamps();
+    
+                // Foreign key constraint (if applicable)
+                $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            });
+        }
     }
+    
     
 
     public function down()
